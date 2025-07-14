@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CI/CD Pipeline with Jenkins</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f9f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #007acc;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    main {
+      padding: 20px;
+    }
+    section {
+      margin-bottom: 30px;
+    }
+    h2 {
+      color: #007acc;
+    }
+    code {
+      background-color: #eee;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+    footer {
+      background-color: #007acc;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>CI/CD Pipeline with Jenkins, Selenium & SonarCloud</h1>
+    <p>Assignment 11 - DevOps Automation</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>1. Jenkins Pipeline Setup</h2>
+      <p>A <code>Jenkinsfile</code> is created and pushed to the GitHub repository. This file defines the stages of the pipeline including build, test, SonarCloud scan, and packaging.</p>
+    </section>
+
+    <section>
+      <h2>2. Selenium Testing</h2>
+      <p>Selenium test scripts are included in the project. Jenkins runs these tests automatically to validate the web application functionality.</p>
+    </section>
+
+    <section>
+      <h2>3. SonarCloud Scanning</h2>
+      <p>SonarCloud is integrated into the pipeline to analyze code quality. The pipeline uses a secure token to authenticate and send results to SonarCloud.</p>
+    </section>
+
+    <section>
+      <h2>4. Package Building</h2>
+      <p>The pipeline builds the application using Maven or another build tool. The output is a deployable package such as a <code>.jar</code> or <code>.war</code> file.</p>
+    </section>
+
+    <section>
+      <h2>5. Results</h2>
+      <ul>
+        <li><strong>Package:</strong> Available in Jenkins artifacts</li>
+        <li><strong>SonarCloud Report:</strong> Viewable on the SonarCloud dashboard</li>
+        <li><strong>Test Results:</strong> Displayed in Jenkins test reports</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 DevOps Project | Created by [Your Name]</p>
+  </footer>
+
+</body>
+</html>
