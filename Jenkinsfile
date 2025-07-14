@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        SONAR_SCANNER_HOME = tool 'SonarQubeScanner'
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -8,24 +12,38 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Install Dependencies') {
             steps {
-                sh 'mvn clean package'
+                sh 'pip install -r requirements.txt'
             }
         }
 
-        stage('Test') {
+        stage('Run Selenium Tests') {
             steps {
-                sh 'mvn test'
+                sh 'python3 -m unittest discover tests'
             }
         }
 
-        stage('SonarCloud Analysis') {
+        stage('SonarQube Scan') {
             steps {
-                withSonarQubeEnv('SonarCloud') {
-                    sh 'mvn sonar:sonar -Dsonar.projectKey=your_project_key -Dsonar.organization=your_org -Dsonar.login=$SONAR_TOKEN'
+                withSonarQubeEnv('SonarQubeServer') {
+                    sh "${SONAR_SCANNER_HOME}/bin/sonar-scanner"
                 }
             }
         }
+
+        stage('Build Package') {
+            steps {
+                sh 'zip -r demo-package.zip index.html'
+            }
+        }
+    }
+
+    post {
+        always {
+            archiveArtifacts artifacts: 'demo-package.zip', fingerprint: true
+            junit 'tests/*.xml'
+        }
     }
 }
+
